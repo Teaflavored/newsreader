@@ -1,0 +1,10 @@
+<h3>This is feed number <%= feed.escape('id') %>: <%= feed.escape("title") %></h3>
+<button class="refresh">Refresh Feed</button>
+<%= entries.length %>
+<ul>
+    <% entries.each(function (entry) { %>
+        <li>
+            <%= entry.escape('title') %>
+        </li>
+    <% })%>
+</ul>
