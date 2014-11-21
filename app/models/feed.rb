@@ -6,7 +6,7 @@ class Feed < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
   belongs_to :user
   def self.find_or_create_by_url(url, user)
-    feed = Feed.find_by_url(url)
+    feed = Feed.find_by(url: url, user_id: user.id)
     return feed if feed
 
     begin
