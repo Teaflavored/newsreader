@@ -5,11 +5,11 @@
 <ul>
     <% entries.each(function (entry) { %>
         <li style="font-weight:bold;">
+            <span><%= entry.date() %></span>
             <a href="<%= entry.link() %>" target="_blank"><%= entry.escape('title') %></a>
             <p style="font-weight:normal">
                 <%= entry.description() %>
             </p>
-            
         </li>
     <% })%>
 </ul>

@@ -8,7 +8,11 @@ NewsReader.Models.Entry = Backbone.Model.extend({
         return this._link;
     },
     date: function(){
-        return this._date;
+        if(!!this._date){
+            return new Date(this._date);
+        } else {
+            return this._date
+        }
     },
     parse: function(JSONresp){
         var jsonText = JSONresp.json;

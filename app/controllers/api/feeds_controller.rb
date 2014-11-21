@@ -1,6 +1,7 @@
 class Api::FeedsController < ApplicationController
   def index
-    render :json => Feed.all
+    @feeds = current_user.feeds
+    render json: @feeds
   end
 
   def show
@@ -8,8 +9,8 @@ class Api::FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.find_or_create_by_url(feed_params[:url])
-    if feed
+    feed = Feed.find_or_create_by_url(feed_params[:url], current_user)
+    if feed 
       render :json => feed
     else
       render :json => { error: "invalid url" }, status: :unprocessable_entity
